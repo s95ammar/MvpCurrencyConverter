@@ -34,4 +34,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+//  RxJava
+    implementation "io.reactivex.rxjava3:rxjava:$rootProject.ext.rxVersion"
+    implementation "io.reactivex.rxjava3:rxandroid:$rootProject.ext.rxVersion"
+
+
+//  Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp3LoggingInterceptorVersion"
+
+
+
 }
