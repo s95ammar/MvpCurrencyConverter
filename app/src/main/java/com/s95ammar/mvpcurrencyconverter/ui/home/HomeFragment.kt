@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.s95ammar.mvpcurrencyconverter.R
+import com.s95ammar.mvpcurrencyconverter.ServiceLocator
+import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<HomePresenter>() {
+
+    override fun providePresenter() = HomePresenter(ServiceLocator.repository)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
