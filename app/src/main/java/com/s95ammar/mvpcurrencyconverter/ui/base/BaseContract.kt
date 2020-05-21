@@ -14,6 +14,8 @@ class BaseContract {
 
     interface View {
 
+        fun showToast(msg: String)
+
     }
 
 }

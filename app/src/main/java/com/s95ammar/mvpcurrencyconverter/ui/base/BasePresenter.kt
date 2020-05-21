@@ -1,12 +1,13 @@
 package com.s95ammar.mvpcurrencyconverter.ui.base
 
+import com.s95ammar.mvpcurrencyconverter.api.Repository
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class BasePresenter<V : BaseContract.View>
+abstract class BasePresenter<V : BaseContract.View>(val repository: Repository)
     : BaseContract.Presenter<V> {
 
     var view: V? = null
-    private var disposables: CompositeDisposable = CompositeDisposable()
+    protected var disposables: CompositeDisposable = CompositeDisposable()
 
     override fun attach(view: V) {
         this.view = view

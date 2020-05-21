@@ -1,26 +1,27 @@
 package com.s95ammar.mvpcurrencyconverter.ui.base
 
 import android.content.Context
-import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment<P : BaseContract.Presenter<*>>
     : Fragment(), BaseContract.View {
 
-    protected var presenter: P? = null
+    protected lateinit var presenter: P
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         presenter = providePresenter()
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        if (presenter != null) {
-            presenter?.unsubscribe()
-            presenter?.detach()
-        }
+        presenter.unsubscribe()
+        presenter.detach()
+    }
+
+    override fun showToast(msg: String) {
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 
     abstract fun providePresenter(): P
