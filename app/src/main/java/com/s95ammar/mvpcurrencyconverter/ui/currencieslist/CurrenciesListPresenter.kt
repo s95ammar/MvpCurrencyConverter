@@ -4,6 +4,6 @@ import com.s95ammar.mvpcurrencyconverter.model.Repository
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
 
 class CurrenciesListPresenter(repository: Repository) :
-    BasePresenter<CurrenciesListContract.View>(repository) {
+    BasePresenter<CurrenciesListContract.View>(repository), CurrenciesListContract.Presenter {
 
 }

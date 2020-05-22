@@ -8,7 +8,7 @@ import com.s95ammar.mvpcurrencyconverter.R
 import com.s95ammar.mvpcurrencyconverter.ServiceLocator
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 
-class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>() {
+class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), CurrenciesListContract.View {
 
     override fun providePresenter() = CurrenciesListPresenter(ServiceLocator.repository)
 
