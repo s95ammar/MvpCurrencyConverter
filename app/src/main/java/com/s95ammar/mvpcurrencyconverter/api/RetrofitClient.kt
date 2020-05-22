@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit
 class RetrofitClient {
 
     companion object {
+        const val COUNTRY_CURRENCY_URL = "https://restcountries.eu/rest/v2/alpha/"
+
         const val BASE_URL = "https://currency-converter5.p.rapidapi.com/currency/"
         val HEADER_HOST = Header("x-rapidapi-host", "currency-converter5.p.rapidapi.com")
         val HEADER_KEY =

@@ -1,6 +1,6 @@
 package com.s95ammar.mvpcurrencyconverter.ui.base
 
-import com.s95ammar.mvpcurrencyconverter.api.Repository
+import com.s95ammar.mvpcurrencyconverter.model.Repository
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BasePresenter<V : BaseContract.View>(val repository: Repository)

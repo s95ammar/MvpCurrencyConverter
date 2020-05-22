@@ -1,13 +1,18 @@
 package com.s95ammar.mvpcurrencyconverter.api
 
 import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
+import com.s95ammar.mvpcurrencyconverter.api.resp.CountryCurrencyResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 
 interface ApiService {
+    @GET
+    fun getCountryCurrency(@Url url: String): Single<CountryCurrencyResponse>
+
     @GET("convert")
     fun getRate(
         @Query("from") from: String,
