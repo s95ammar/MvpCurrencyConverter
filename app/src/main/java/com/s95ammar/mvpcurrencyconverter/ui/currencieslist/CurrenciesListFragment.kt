@@ -18,4 +18,9 @@ class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), Currenci
         return inflater.inflate(R.layout.fragment_currencies_list, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.attach(this)
+    }
+
 }

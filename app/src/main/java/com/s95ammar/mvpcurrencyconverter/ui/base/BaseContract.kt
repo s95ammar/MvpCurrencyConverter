@@ -16,6 +16,10 @@ class BaseContract {
 
         fun showToast(msg: String)
 
+        fun showLoading() {}
+
+        fun hideLoading() {}
+
     }
 
 }
