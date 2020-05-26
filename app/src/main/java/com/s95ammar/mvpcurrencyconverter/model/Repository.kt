@@ -13,7 +13,7 @@ class Repository(private val apiService: ApiService) {
             .map { currenciesResp -> currenciesResp.currencies.firstOrNull() }
     }
 
-    fun getRate(from: String, to: String, amount: Double): Single<ConversionResponse> {
+    fun getRate(from: String, to: String = "", amount: Double = 1.0): Single<ConversionResponse> {
         return apiService.getRate(from, to, amount)
     }
 

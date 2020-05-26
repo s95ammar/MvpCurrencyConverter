@@ -30,25 +30,27 @@ class HomePresenter(
 
     private fun loadBaseToHomeHistory() {
         singleHomeCurrencyCode
-            .flatMap { homeCountryCurrencyCode ->
+            .flatMap { homeCurrencyCode ->
                 val historySinglesArray = Array(HISTORY_DAYS_COUNT) { i ->
                     repository.getRateHistory(
                         LocalDate.now().minusDays(i).toString(),
                         baseCurrencyCode,
-                        homeCountryCurrencyCode
+                        homeCurrencyCode
                     )
                 }
 
                 return@flatMap Single.zipArray<ConversionResponse, List<Pair<Double?, String?>>>(
                     Function {
                         return@Function it.filterIsInstance<ConversionResponse>().map { response ->
-                            response.rates?.get(homeCountryCurrencyCode)?.rate to response.updatedDate
+                            // TODO: Add mapper
+                            response.rates?.get(homeCurrencyCode)?.rate to response.updatedDate
                         }
                     }, *historySinglesArray
                 )
             }
             .subIoObserveMain(
                 onSuccess = { history ->
+                    // TODO: Add mapper & send data to view
                     logcat(functionName = "onSuccess", msg = history.toString())
                 },
                 onError = { throwable ->

@@ -11,7 +11,7 @@ abstract class BasePresenter<V : BaseContract.View>(
     protected val repository: Repository,
     private val homeCountryCode: String,
     protected val baseCurrencyCode: String,
-    @Nullable protected var homeCurrencyCode: String?
+    @Nullable private var homeCurrencyCode: String?
 ) : BaseContract.Presenter<V> {
 
     var view: V? = null
