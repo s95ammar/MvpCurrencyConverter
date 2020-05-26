@@ -11,11 +11,10 @@ class App: Application() {
         const val SHARED_PREFERENCES_NAME = "SHARED_PREFERENCES"
     }
 
-    var homeCountryCurrencyCode: String? = null
-
-    fun getCountryCode(): String {
-        return (applicationContext.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).networkCountryIso
-    }
+    var homeCurrencyCode: String? = null
+    var baseCurrencyCode = USD
+    val homeCountryCode: String
+        get() = (applicationContext.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).networkCountryIso
 
 
 }

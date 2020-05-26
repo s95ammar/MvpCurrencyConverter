@@ -11,7 +11,10 @@ abstract class BasePresenter<V : BaseContract.View>(val repository: Repository)
 
     override fun attach(view: V) {
         this.view = view
+        onAttach()
     }
+
+    protected open fun onAttach() {}
 
     override fun unsubscribe() {
         disposables.dispose()

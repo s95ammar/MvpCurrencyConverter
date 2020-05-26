@@ -6,6 +6,8 @@ class BaseContract {
 
         fun attach(view: V)
 
+        fun onRefresh()
+
         fun unsubscribe()
 
         fun detach()

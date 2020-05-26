@@ -14,7 +14,13 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
-    override fun providePresenter() = HomePresenter(ServiceLocator.repository)
+    override fun providePresenter() = HomePresenter(
+        ServiceLocator.repository,
+        application.homeCountryCode,
+        application.baseCurrencyCode,
+        application.homeCurrencyCode
+    )
+
     private var loadingManager: LoadingManager? = null
 
     override fun onAttach(context: Context) {
@@ -31,12 +37,12 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.attach(this)
-        presenter.getCountryCurrency(application.getCountryCode())
+        home_layout_swipe_to_refresh.setOnRefreshListener { presenter.onRefresh() }
     }
 
     override fun setHomeCountryCurrencyCode(code: String) {
         showToast("saving: $code")
-        application.homeCountryCurrencyCode = code
+        application.homeCurrencyCode = code
     }
 
     override fun showLoading() {
@@ -45,5 +51,6 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
     override fun hideLoading() {
         loadingManager?.hideLoading()
+        home_layout_swipe_to_refresh.isRefreshing = false
     }
 }

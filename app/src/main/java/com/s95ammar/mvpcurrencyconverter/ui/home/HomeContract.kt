@@ -1,11 +1,12 @@
 package com.s95ammar.mvpcurrencyconverter.ui.home
 
+import androidx.annotation.Nullable
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseContract
+import org.jetbrains.annotations.NotNull
 
-interface HomeContract {
+class HomeContract {
 
     interface Presenter : BaseContract.Presenter<View> {
-        fun getCountryCurrency(countryCode: String)
     }
 
     interface View : BaseContract.View {

@@ -2,7 +2,7 @@ package com.s95ammar.mvpcurrencyconverter.ui.currencieslist
 
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseContract
 
-interface CurrenciesListContract {
+class CurrenciesListContract {
 
     interface Presenter : BaseContract.Presenter<View> {
 
