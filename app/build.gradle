@@ -47,6 +47,9 @@ dependencies {
 //    material components
     implementation "com.google.android.material:material:$rootProject.ext.materialVersion"
 
+//    swipe to refresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.ext.swiperefreshVersion"
+
 //    navigation
     implementation "androidx.navigation:navigation-fragment:$rootProject.ext.navigationVersion"
     implementation "androidx.navigation:navigation-ui:$rootProject.ext.navigationVersion"
@@ -66,5 +69,7 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp3LoggingInterceptorVersion"
 
+    // Time library
+    implementation "joda-time:joda-time:$rootProject.ext.jodatimeVersion"
 
 }
