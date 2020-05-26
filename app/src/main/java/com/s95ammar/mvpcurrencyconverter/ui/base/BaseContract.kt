@@ -16,6 +16,8 @@ class BaseContract {
 
     interface View {
 
+        fun setHomeCountryCurrencyCode(code: String)
+
         fun showToast(msg: String)
 
         fun showLoading() {}

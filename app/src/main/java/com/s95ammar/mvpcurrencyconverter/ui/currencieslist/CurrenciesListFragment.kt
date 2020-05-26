@@ -10,7 +10,12 @@ import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 
 class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), CurrenciesListContract.View {
 
-    override fun providePresenter() = CurrenciesListPresenter(ServiceLocator.repository)
+    override fun providePresenter() = CurrenciesListPresenter(
+        ServiceLocator.repository,
+        application.homeCountryCode,
+        application.baseCurrencyCode,
+        application.homeCurrencyCode
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

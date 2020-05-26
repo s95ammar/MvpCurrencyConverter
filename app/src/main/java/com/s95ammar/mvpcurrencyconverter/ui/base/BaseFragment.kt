@@ -24,6 +24,11 @@ abstract class BaseFragment<P : BaseContract.Presenter<*>>
         presenter.detach()
     }
 
+    override fun setHomeCountryCurrencyCode(code: String) {
+        showToast("saving: $code")
+        application.homeCurrencyCode = code
+    }
+
     override fun showToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }

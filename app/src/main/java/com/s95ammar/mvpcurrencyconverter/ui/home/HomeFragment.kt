@@ -40,11 +40,6 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
         home_layout_swipe_to_refresh.setOnRefreshListener { presenter.onRefresh() }
     }
 
-    override fun setHomeCountryCurrencyCode(code: String) {
-        showToast("saving: $code")
-        application.homeCurrencyCode = code
-    }
-
     override fun showLoading() {
         loadingManager?.showLoading()
     }
