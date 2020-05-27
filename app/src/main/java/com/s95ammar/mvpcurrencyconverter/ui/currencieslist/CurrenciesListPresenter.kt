@@ -1,5 +1,6 @@
 package com.s95ammar.mvpcurrencyconverter.ui.currencieslist
 
+import com.s95ammar.mvpcurrencyconverter.api.mappers.RateMapper
 import com.s95ammar.mvpcurrencyconverter.logcat
 import com.s95ammar.mvpcurrencyconverter.model.Repository
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
@@ -27,8 +28,8 @@ class CurrenciesListPresenter(
             .flatMap { repository.getRate(it) }
             .subIoObserveMain(
                 onSuccess = { resp ->
-                    // TODO: Add mapper & send data to view
-                    logcat(functionName = "onSuccess", msg = resp.rates?.map { (k, v) -> (k to v.rate?.let { 1 / it }) }.toString())
+                    val rates = RateMapper(resp).toEntity()
+                    logcat(functionName = "onSuccess", msg = rates.toString())
                 },
                 onError = { throwable ->
                     logcat(functionName = "onError", msg = throwable.localizedMessage)

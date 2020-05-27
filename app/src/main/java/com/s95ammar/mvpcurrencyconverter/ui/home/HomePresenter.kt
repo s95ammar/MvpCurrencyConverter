@@ -1,6 +1,7 @@
 package com.s95ammar.mvpcurrencyconverter.ui.home
 
 import com.s95ammar.mvpcurrencyconverter.HISTORY_DAYS_COUNT
+import com.s95ammar.mvpcurrencyconverter.api.mappers.RateHistoryMapper
 import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
 import com.s95ammar.mvpcurrencyconverter.disposeBy
 import com.s95ammar.mvpcurrencyconverter.logcat
@@ -31,26 +32,20 @@ class HomePresenter(
     private fun loadBaseToHomeHistory() {
         singleHomeCurrencyCode
             .flatMap { homeCurrencyCode ->
+
                 val historySinglesArray = Array(HISTORY_DAYS_COUNT) { i ->
-                    repository.getRateHistory(
-                        LocalDate.now().minusDays(i).toString(),
-                        baseCurrencyCode,
-                        homeCurrencyCode
-                    )
+                    repository.getRateHistory(LocalDate.now().minusDays(i).toString(), baseCurrencyCode, homeCurrencyCode)
                 }
 
-                return@flatMap Single.zipArray<ConversionResponse, List<Pair<Double?, String?>>>(
-                    Function {
-                        return@Function it.filterIsInstance<ConversionResponse>().map { response ->
-                            // TODO: Add mapper
-                            response.rates?.get(homeCurrencyCode)?.rate to response.updatedDate
-                        }
-                    }, *historySinglesArray
+                return@flatMap Single.zipArray<ConversionResponse, List<ConversionResponse>>(
+                    Function { arr -> arr.filterIsInstance<ConversionResponse>() },
+                    *historySinglesArray
                 )
+
             }
             .subIoObserveMain(
-                onSuccess = { history ->
-                    // TODO: Add mapper & send data to view
+                onSuccess = { response ->
+                    val history = RateHistoryMapper(response).toEntity()
                     logcat(functionName = "onSuccess", msg = history.toString())
                 },
                 onError = { throwable ->
