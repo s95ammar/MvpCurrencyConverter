@@ -5,4 +5,6 @@
     <string name="title_currencies_list">Currencies</string>
     <string name="title_settings">Settings</string>
     <string name="loading">Loading…</string>
+    <string name="rate_format">%.2f</string>
+
 </resources>

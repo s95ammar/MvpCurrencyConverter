@@ -5,14 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.s95ammar.mvpcurrencyconverter.R
 import com.s95ammar.mvpcurrencyconverter.ServiceLocator
 import com.s95ammar.mvpcurrencyconverter.ui.activity.LoadingManager
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
+import com.s95ammar.mvpcurrencyconverter.ui.currencieslist.adapter.CurrenciesListAdapter
 import com.s95ammar.mvpcurrencyconverter.ui.currencieslist.entity.RateEntity
 import kotlinx.android.synthetic.main.fragment_currencies_list.*
 
 class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), CurrenciesListContract.View {
+
+    private val adapter = CurrenciesListAdapter()
 
     override fun providePresenter() = CurrenciesListPresenter(
         ServiceLocator.repository,
@@ -38,6 +42,8 @@ class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), Currenci
         super.onViewCreated(view, savedInstanceState)
         presenter.attach(this)
         list_layout_swipe_to_refresh.setOnRefreshListener { presenter.onRefresh() }
+        recycler_view.layoutManager = LinearLayoutManager(context)
+        recycler_view.adapter = adapter
     }
 
     override fun showLoading() {
@@ -50,6 +56,7 @@ class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), Currenci
     }
 
     override fun displayRates(rates: List<RateEntity>) {
-
+        adapter.items = rates
+        adapter.notifyDataSetChanged()
     }
 }
