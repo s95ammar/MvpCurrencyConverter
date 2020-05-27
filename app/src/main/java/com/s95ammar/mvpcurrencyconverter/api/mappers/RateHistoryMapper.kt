@@ -1,7 +1,7 @@
 package com.s95ammar.mvpcurrencyconverter.api.mappers
 
 import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
-import com.s95ammar.mvpcurrencyconverter.model.entity.RateHistoryEntity
+import com.s95ammar.mvpcurrencyconverter.ui.home.entity.RateHistoryEntity
 
 class RateHistoryMapper(private val conversions: List<ConversionResponse>) {
 
@@ -16,6 +16,10 @@ class RateHistoryMapper(private val conversions: List<ConversionResponse>) {
             datesToRates[date] = rate
         }
 
-        return RateHistoryEntity(sourceCurrency, targetCurrency, datesToRates)
+        return RateHistoryEntity(
+            sourceCurrency,
+            targetCurrency,
+            datesToRates
+        )
     }
 }
