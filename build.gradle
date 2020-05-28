@@ -38,5 +38,6 @@ ext {
     retrofitVersion = '2.8.2'
     okhttp3LoggingInterceptorVersion = '4.5.0'
     jodatimeVersion = '2.10.2'
+    mpaAndroidChartVersion = '3.1.0'
 
 }
