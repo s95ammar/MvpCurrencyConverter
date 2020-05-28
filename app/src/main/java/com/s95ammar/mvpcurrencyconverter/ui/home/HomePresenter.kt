@@ -34,7 +34,7 @@ class HomePresenter(
             .flatMap { homeCurrencyCode ->
 
                 val historySinglesArray = Array(HISTORY_DAYS_COUNT) { i ->
-                    repository.getRateHistory(LocalDate.now().minusDays(i).toString(), baseCurrencyCode, homeCurrencyCode)
+                    repository.getRateHistory(LocalDate.now().minusDays(HISTORY_DAYS_COUNT - i - 1).toString(), baseCurrencyCode, homeCurrencyCode)
                 }
 
                 return@flatMap Single.zipArray<ConversionResponse, List<ConversionResponse>>(
@@ -45,8 +45,9 @@ class HomePresenter(
             }
             .subIoObserveMain(
                 onSuccess = { response ->
-                    val history = RateHistoryMapper(response).toEntity()
-                    logcat(functionName = "onSuccess", msg = history.toString())
+                    RateHistoryMapper(response).toEntity()?.let { history ->
+                        view?.displayHistory(history)
+                    }
                 },
                 onError = { throwable ->
                     logcat(functionName = "onError", msg = throwable.localizedMessage)

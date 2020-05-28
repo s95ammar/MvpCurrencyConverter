@@ -16,14 +16,7 @@ class RatesMapper(private val conversion: ConversionResponse) {
             val date = conversion.updatedDate ?: return emptyList()
 
             rates.add(
-                RateEntity(
-                    fromCode,
-                    fromName,
-                    toCode,
-                    toName,
-                    1 / inverseRate,
-                    date
-                )
+                RateEntity(fromCode, fromName, toCode, toName, 1 / inverseRate, date)
             )
         }
 
