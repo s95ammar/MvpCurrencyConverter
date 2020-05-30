@@ -1,6 +1,5 @@
 package com.s95ammar.mvpcurrencyconverter.ui.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.s95ammar.mvpcurrencyconverter.*
-import com.s95ammar.mvpcurrencyconverter.ui.activity.LoadingManager
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateHistoryViewEntity
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -29,16 +27,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
         application.homeCurrencyCode
     )
 
-    private var loadingManager: LoadingManager? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        loadingManager = context as? LoadingManager
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 

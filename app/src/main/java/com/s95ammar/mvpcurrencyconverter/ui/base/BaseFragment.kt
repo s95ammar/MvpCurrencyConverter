@@ -7,17 +7,20 @@ import androidx.fragment.app.Fragment
 import com.s95ammar.mvpcurrencyconverter.App
 import com.s95ammar.mvpcurrencyconverter.Errors
 import com.s95ammar.mvpcurrencyconverter.R
+import com.s95ammar.mvpcurrencyconverter.ui.activity.LoadingManager
 
-abstract class BaseFragment<P : BaseContract.Presenter<*>>
-    : Fragment(), BaseContract.View {
+abstract class BaseFragment<P : BaseContract.Presenter<*>> : Fragment(), BaseContract.View {
 
     protected lateinit var presenter: P
 
+    protected var loadingManager: LoadingManager? = null
     protected val application
         get() = requireActivity().applicationContext as App
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        loadingManager = context as? LoadingManager
         presenter = providePresenter()
     }
 

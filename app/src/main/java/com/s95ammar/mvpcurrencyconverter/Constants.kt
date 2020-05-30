@@ -2,6 +2,7 @@ package com.s95ammar.mvpcurrencyconverter
 
 object Constants {
     const val USD = "USD"
+    const val NONE = "None"
     const val HISTORY_DAYS_COUNT = 10
     const val CHART_LINE_WIDTH = 4f
     const val CHART_CIRCLE_RADIUS = 5f

@@ -27,16 +27,7 @@ class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), Currenci
         application.homeCurrencyCode
     )
 
-    private var loadingManager: LoadingManager? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        loadingManager = context as? LoadingManager
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_currencies_list, container, false)
     }
 

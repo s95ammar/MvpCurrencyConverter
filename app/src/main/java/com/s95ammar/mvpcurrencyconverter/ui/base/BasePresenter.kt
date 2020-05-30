@@ -25,7 +25,7 @@ abstract class BasePresenter<V : BaseContract.View>(
         get() = if (homeCurrencyCode == null) {
             repository.getCountryCurrency(homeCountryCode)
                 .map { currency -> currency.code }
-                .doAfterSuccess {
+                .doOnSuccess {
                     Single.just(it).subIoObserveMain {
                         view?.setHomeCountryCurrencyCode(it)
                         homeCurrencyCode = it
