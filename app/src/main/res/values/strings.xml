@@ -6,5 +6,9 @@
     <string name="title_settings">Settings</string>
     <string name="loading">Loading…</string>
     <string name="rate_format">%.2f</string>
+    <string name="history_rate_of_by">Rate of %1$s by %2$s</string>
+    <string name="history_date_range">%1$s to %2$s</string>
+    <string name="rates_for_code">Rates for %1$s</string>
+    <string name="rates_for_date">%1$s</string>
 
 </resources>

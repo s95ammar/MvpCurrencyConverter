@@ -57,8 +57,18 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
         home_layout_swipe_to_refresh.isRefreshing = false
     }
 
+    override fun setCurrencyCodes(from: String, to: String) {
+        history_rate_text_view.text = resources.getString(R.string.history_rate_of_by, from, to)
+    }
+
+    override fun setDateRange(from: String, to: String) {
+        val fromFormatted = LocalDate(from).toString(Constants.DATE_PATTERN_DD_MM)
+        val toFormatted = LocalDate(to).toString(Constants.DATE_PATTERN_DD_MM)
+        history_date_range_text_view.text = resources.getString(R.string.history_date_range, fromFormatted, toFormatted)
+    }
+
     override fun displayHistory(history: RateHistoryViewEntity) {
-        val xValues = history.datesToRates.keys.map { LocalDate(it).toString(Constants.CHART_DATE_PATTERN) }
+        val xValues = history.datesToRates.keys.map { LocalDate(it).toString(Constants.DATE_PATTERN_DD_MM) }
 
         chart.apply {
             visibility = View.VISIBLE

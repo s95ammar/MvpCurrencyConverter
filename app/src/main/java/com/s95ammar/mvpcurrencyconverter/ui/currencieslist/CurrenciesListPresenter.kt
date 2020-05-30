@@ -29,6 +29,8 @@ class CurrenciesListPresenter(
             .subIoObserveMain(
                 onSuccess = { resp ->
                     val rates = RatesMapper(resp).toEntity()
+                    view?.setFromCode(rates.first().toCode)
+                    view?.setDate(rates.first().Date)
                     view?.displayRates(rates)
                 },
                 onError = { throwable ->

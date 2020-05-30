@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="4dp"
     app:cardElevation="8dp"
+    android:layout_marginBottom="4dp"
     app:cardCornerRadius="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -35,7 +35,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/list_from_code_text_view"
-            tools:text="US Dollar rrrrrrrrrrrrrrrrrrrrrrrrrr" />
+            tools:text="US Dollar rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" />
 
         <TextView
             android:id="@+id/list_rate_value_text_view"

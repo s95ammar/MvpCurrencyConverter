@@ -11,6 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/history_rate_text_view"
+            style="@style/sans_serif_condensed_medium_black_32sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/history_date_range_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Rate of USD by UAH" />
+
+        <TextView
+            android:id="@+id/history_date_range_text_view"
+            style="@style/sans_serif_condensed_black_16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_upper"
+            app:layout_constraintEnd_toEndOf="@+id/history_rate_text_view"
+            app:layout_constraintStart_toStartOf="@+id/history_rate_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/history_rate_text_view"
+            tools:text="20.05 to 30.05" />
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_upper"
@@ -19,6 +44,16 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.2" />
 
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_lower"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_upper" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_lower"
             android:layout_width="wrap_content"
@@ -26,24 +61,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.8" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_lower"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline_upper">
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/chart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" />
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

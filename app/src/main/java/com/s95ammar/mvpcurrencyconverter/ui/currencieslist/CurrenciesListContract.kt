@@ -10,6 +10,8 @@ class CurrenciesListContract {
     }
 
     interface View : BaseContract.View {
+        fun setFromCode(value: String)
+        fun setDate(value: String)
         fun displayRates(rates: List<RateViewEntity>)
     }
 }

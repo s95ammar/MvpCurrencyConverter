@@ -10,6 +10,8 @@ class HomeContract {
     }
 
     interface View : BaseContract.View {
+        fun setCurrencyCodes(from: String, to: String)
+        fun setDateRange(from: String, to: String)
         fun displayHistory(history: RateHistoryViewEntity)
     }
 }

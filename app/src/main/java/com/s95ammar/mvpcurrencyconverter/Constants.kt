@@ -7,5 +7,6 @@ object Constants {
     const val CHART_CIRCLE_RADIUS = 5f
     const val CHART_VALUE_TEXT_SIZE = 10f
     const val CHART_CIRCLE_HOLE_RADIUS = 3f
-    const val CHART_DATE_PATTERN = "dd.MM"
+    const val DATE_PATTERN_DD_MM = "dd.MM"
+    const val DATE_PATTERN_FULL = "dd.MM.yyyy"
 }
