@@ -7,9 +7,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-const val USD = "USD"
-const val HISTORY_DAYS_COUNT = 10
-
 fun Disposable.disposeBy(compositeDisposable: CompositeDisposable): Disposable =
     apply { compositeDisposable.add(this) }
 
@@ -27,6 +24,5 @@ fun <T> Single<T>.subIoObserveMain(doFinally: ()-> Unit = {}, onError: (Throwabl
             onError
         )
 }
-
 
 data class Header(val name: String, val value: String)

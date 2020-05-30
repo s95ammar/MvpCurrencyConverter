@@ -1,12 +1,9 @@
 package com.s95ammar.mvpcurrencyconverter.ui.home
 
-import com.s95ammar.mvpcurrencyconverter.HISTORY_DAYS_COUNT
+import com.s95ammar.mvpcurrencyconverter.*
 import com.s95ammar.mvpcurrencyconverter.api.mappers.RateHistoryMapper
 import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
-import com.s95ammar.mvpcurrencyconverter.disposeBy
-import com.s95ammar.mvpcurrencyconverter.logcat
 import com.s95ammar.mvpcurrencyconverter.model.Repository
-import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
 import io.reactivex.Single
 import io.reactivex.functions.Function
@@ -33,8 +30,8 @@ class HomePresenter(
         singleHomeCurrencyCode
             .flatMap { homeCurrencyCode ->
 
-                val historySinglesArray = Array(HISTORY_DAYS_COUNT) { i ->
-                    repository.getRateHistory(LocalDate.now().minusDays(HISTORY_DAYS_COUNT - i - 1).toString(), baseCurrencyCode, homeCurrencyCode)
+                val historySinglesArray = Array(Constants.HISTORY_DAYS_COUNT) { i ->
+                    repository.getRateHistory(LocalDate.now().minusDays(Constants.HISTORY_DAYS_COUNT - i - 1).toString(), baseCurrencyCode, homeCurrencyCode)
                 }
 
                 return@flatMap Single.zipArray<ConversionResponse, List<ConversionResponse>>(

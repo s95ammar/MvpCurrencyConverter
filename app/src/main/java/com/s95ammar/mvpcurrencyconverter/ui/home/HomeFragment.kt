@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.s95ammar.mvpcurrencyconverter.R
-import com.s95ammar.mvpcurrencyconverter.ServiceLocator
+import com.s95ammar.mvpcurrencyconverter.*
 import com.s95ammar.mvpcurrencyconverter.ui.activity.LoadingManager
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateHistoryViewEntity
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.joda.time.LocalDate
 
 
 class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
@@ -55,12 +58,35 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     }
 
     override fun displayHistory(history: RateHistoryViewEntity) {
-        chart.visibility = View.VISIBLE
-        val xValues = history.datesToRates.values
-        val yValues = history.datesToRates.toList().mapIndexed { i, pair ->  Entry(i.toFloat(), pair.second.toFloat()) }
-        val lineDataSet1 = LineDataSet(yValues, "test")
-        val dataSets = mutableListOf<ILineDataSet>().apply { add(lineDataSet1) }
-        chart.animate()
-        chart.data = LineData(dataSets)
+        val xValues = history.datesToRates.keys.map { LocalDate(it).toString(Constants.CHART_DATE_PATTERN) }
+
+        chart.apply {
+            visibility = View.VISIBLE
+            xAxis.valueFormatter = IndexAxisValueFormatter(xValues)
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.setLabelCount(xValues.size, true)
+            setScaleEnabled(false)
+            axisRight.isEnabled = false
+            legend.isEnabled = false
+            description.isEnabled = false
+        }
+
+        val yValues = history.datesToRates.values.mapIndexed { i, value -> Entry(i.toFloat(), value.toFloat()) }
+        val lineDataSet = LineDataSet(yValues, "").apply {
+            lineWidth = Constants.CHART_LINE_WIDTH
+            circleRadius = Constants.CHART_CIRCLE_RADIUS
+            valueTextSize = Constants.CHART_VALUE_TEXT_SIZE
+            circleHoleRadius = Constants.CHART_CIRCLE_HOLE_RADIUS
+            color = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
+            circleHoleColor = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
+            setCircleColor(ContextCompat.getColor(requireContext(), R.color.colorAccent))
+            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
+
+        }
+
+        val dataSets = mutableListOf<ILineDataSet>().apply { add(lineDataSet) }
+
+        chart.animateX(500)
+        chart.data = LineData(dataSets).apply { isHighlightEnabled = false }
     }
 }

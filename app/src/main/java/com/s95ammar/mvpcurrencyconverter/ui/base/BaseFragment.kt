@@ -25,7 +25,6 @@ abstract class BaseFragment<P : BaseContract.Presenter<*>>
     }
 
     override fun setHomeCountryCurrencyCode(code: String) {
-        showToast("saving: $code")
         application.homeCurrencyCode = code
     }
 

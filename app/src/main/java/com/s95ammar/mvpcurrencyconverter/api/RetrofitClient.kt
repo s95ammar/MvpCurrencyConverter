@@ -14,11 +14,9 @@ class RetrofitClient {
 
     companion object {
         const val COUNTRY_CURRENCY_URL = "https://restcountries.eu/rest/v2/alpha/"
-
         const val BASE_URL = "https://currency-converter5.p.rapidapi.com/currency/"
         val HEADER_HOST = Header("x-rapidapi-host", "currency-converter5.p.rapidapi.com")
-        val HEADER_KEY =
-            Header("x-rapidapi-key", "5463a50e64msha8b0f9b33d8f4edp121681jsn076c5988a5d9")
+        val HEADER_KEY = Header("x-rapidapi-key", "5463a50e64msha8b0f9b33d8f4edp121681jsn076c5988a5d9")
     }
 
     private val okHttpClient
