@@ -50,11 +50,9 @@ class HomePresenter(
                         view?.setCurrencyCodes(history.fromCode, history.toCode)
                         view?.setDateRange(history.datesToRates.keys.first(), history.datesToRates.keys.last())
                         view?.displayHistory(history)
-                    }
+                    } ?: view?.onError(Errors.COUNTRY_UNAVAILABLE_ERROR)
                 },
-                onError = { throwable ->
-                    logcat(functionName = "onError", msg = throwable.localizedMessage)
-                },
+                onError = { throwable -> parseError(throwable) },
                 doFinally = { view?.hideLoading() }
             )
             .disposeBy(disposables)

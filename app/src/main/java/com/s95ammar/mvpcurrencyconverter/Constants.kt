@@ -10,3 +10,10 @@ object Constants {
     const val DATE_PATTERN_DD_MM = "dd.MM"
     const val DATE_PATTERN_FULL = "dd.MM.yyyy"
 }
+
+object Errors {
+    const val UNKNOWN_ERROR = 0
+    const val CONNECTION_ERROR = 1
+    const val COUNTRY_UNAVAILABLE_ERROR = 2
+    const val INTERNAL_SERVER_ERROR = 3
+}

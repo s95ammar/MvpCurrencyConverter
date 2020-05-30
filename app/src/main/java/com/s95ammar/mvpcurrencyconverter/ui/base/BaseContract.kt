@@ -5,9 +5,7 @@ class BaseContract {
     interface Presenter<V : View>{
 
         fun attach(view: V)
-
         fun unsubscribe()
-
         fun detach()
 
     }
@@ -15,12 +13,10 @@ class BaseContract {
     interface View {
 
         fun setHomeCountryCurrencyCode(code: String)
-
         fun showToast(msg: String)
-
         fun showLoading() {}
-
         fun hideLoading() {}
+        fun onError(error: Int)
 
     }
 

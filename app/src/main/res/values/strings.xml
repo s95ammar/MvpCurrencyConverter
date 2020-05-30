@@ -10,5 +10,9 @@
     <string name="history_date_range">%1$s to %2$s</string>
     <string name="rates_for_code">Rates for %1$s</string>
     <string name="rates_for_date">%1$s</string>
+    <string name="error_connection_failed">Connection error</string>
+    <string name="error_country_unavailable">Can\'t find data for this country</string>
+    <string name="error_server">Server unavailable</string>
+    <string name="error_unknown">Unknown error</string>
 
 </resources>

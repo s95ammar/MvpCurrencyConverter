@@ -2,8 +2,11 @@ package com.s95ammar.mvpcurrencyconverter.ui.base
 
 import android.content.Context
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.s95ammar.mvpcurrencyconverter.App
+import com.s95ammar.mvpcurrencyconverter.Errors
+import com.s95ammar.mvpcurrencyconverter.R
 
 abstract class BaseFragment<P : BaseContract.Presenter<*>>
     : Fragment(), BaseContract.View {
@@ -28,8 +31,21 @@ abstract class BaseFragment<P : BaseContract.Presenter<*>>
         application.homeCurrencyCode = code
     }
 
+    protected fun showToast(@StringRes resId: Int) {
+        Toast.makeText(requireContext(), resId, Toast.LENGTH_SHORT).show()
+    }
+
     override fun showToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onError(error: Int) {
+        when (error) {
+            Errors.CONNECTION_ERROR -> showToast(R.string.error_connection_failed)
+            Errors.COUNTRY_UNAVAILABLE_ERROR -> showToast(R.string.error_country_unavailable)
+            Errors.INTERNAL_SERVER_ERROR -> showToast(R.string.error_server)
+            else -> showToast(R.string.error_unknown)
+        }
     }
 
     abstract fun providePresenter(): P

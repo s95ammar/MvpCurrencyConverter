@@ -1,11 +1,15 @@
 package com.s95ammar.mvpcurrencyconverter.ui.base
 
 import androidx.annotation.Nullable
+import com.s95ammar.mvpcurrencyconverter.Errors
+import com.s95ammar.mvpcurrencyconverter.logcat
 import com.s95ammar.mvpcurrencyconverter.model.Repository
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
-import org.jetbrains.annotations.NotNull
+import retrofit2.HttpException
+import java.net.ConnectException
+import java.net.UnknownHostException
 
 abstract class BasePresenter<V : BaseContract.View>(
     protected val repository: Repository,
@@ -38,8 +42,25 @@ abstract class BasePresenter<V : BaseContract.View>(
 
     protected open fun onAttach() {}
 
+    protected fun parseError(throwable: Throwable) {
+        logcat(functionName = "onError", msg = throwable.localizedMessage)
+        val error =  when (throwable) {
+            is ConnectException,
+            is UnknownHostException-> Errors.CONNECTION_ERROR
+            is HttpException -> {
+                when (throwable.code()) {
+                    404 -> Errors.COUNTRY_UNAVAILABLE_ERROR
+                    500 -> Errors.INTERNAL_SERVER_ERROR
+                    else -> Errors.UNKNOWN_ERROR
+                }
+            }
+            else -> Errors.UNKNOWN_ERROR
+        }
+        view?.onError(error)
+    }
+
     override fun unsubscribe() {
-        disposables.dispose()
+        disposables.clear()
     }
 
     override fun detach() {

@@ -1,7 +1,7 @@
 package com.s95ammar.mvpcurrencyconverter.ui.currencieslist
 
+import com.s95ammar.mvpcurrencyconverter.Errors
 import com.s95ammar.mvpcurrencyconverter.model.mappers.RatesMapper
-import com.s95ammar.mvpcurrencyconverter.logcat
 import com.s95ammar.mvpcurrencyconverter.model.Repository
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
@@ -29,13 +29,15 @@ class CurrenciesListPresenter(
             .subIoObserveMain(
                 onSuccess = { resp ->
                     val rates = RatesMapper(resp).toEntity()
-                    view?.setFromCode(rates.first().toCode)
-                    view?.setDate(rates.first().Date)
-                    view?.displayRates(rates)
+                    if (rates.isNotEmpty()) {
+                        view?.setFromCode(rates.first().toCode)
+                        view?.setDate(rates.first().Date)
+                        view?.displayRates(rates)
+                    } else {
+                        view?.onError(Errors.COUNTRY_UNAVAILABLE_ERROR)
+                    }
                 },
-                onError = { throwable ->
-                    logcat(functionName = "onError", msg = throwable.localizedMessage)
-                },
+                onError = { throwable -> parseError(throwable) },
                 doFinally = { view?.hideLoading() }
 
             )
