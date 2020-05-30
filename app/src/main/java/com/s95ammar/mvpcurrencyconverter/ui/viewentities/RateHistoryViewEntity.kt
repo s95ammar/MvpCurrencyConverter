@@ -1,6 +1,6 @@
-package com.s95ammar.mvpcurrencyconverter.ui.home.entity
+package com.s95ammar.mvpcurrencyconverter.ui.viewentities
 
-data class RateHistoryEntity(
+data class RateHistoryViewEntity(
     val fromCode: String,
     val fromName: String,
     val toCode: String,

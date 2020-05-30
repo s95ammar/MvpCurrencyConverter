@@ -1,7 +1,7 @@
 package com.s95ammar.mvpcurrencyconverter.ui.home
 
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseContract
-import com.s95ammar.mvpcurrencyconverter.ui.home.entity.RateHistoryEntity
+import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateHistoryViewEntity
 
 class HomeContract {
 
@@ -10,6 +10,6 @@ class HomeContract {
     }
 
     interface View : BaseContract.View {
-        fun displayHistory(history: RateHistoryEntity)
+        fun displayHistory(history: RateHistoryViewEntity)
     }
 }

@@ -11,7 +11,7 @@ import com.s95ammar.mvpcurrencyconverter.ServiceLocator
 import com.s95ammar.mvpcurrencyconverter.ui.activity.LoadingManager
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 import com.s95ammar.mvpcurrencyconverter.ui.currencieslist.adapter.CurrenciesListAdapter
-import com.s95ammar.mvpcurrencyconverter.ui.currencieslist.entity.RateEntity
+import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity
 import kotlinx.android.synthetic.main.fragment_currencies_list.*
 
 class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), CurrenciesListContract.View {
@@ -55,7 +55,7 @@ class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), Currenci
         list_layout_swipe_to_refresh.isRefreshing = false
     }
 
-    override fun displayRates(rates: List<RateEntity>) {
+    override fun displayRates(rates: List<RateViewEntity>) {
         adapter.items = rates
         adapter.notifyDataSetChanged()
     }

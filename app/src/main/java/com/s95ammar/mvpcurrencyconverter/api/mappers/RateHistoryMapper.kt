@@ -1,11 +1,11 @@
 package com.s95ammar.mvpcurrencyconverter.api.mappers
 
 import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
-import com.s95ammar.mvpcurrencyconverter.ui.home.entity.RateHistoryEntity
+import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateHistoryViewEntity
 
 class RateHistoryMapper(private val conversions: List<ConversionResponse>) {
 
-    fun toEntity(): RateHistoryEntity? {
+    fun toEntity(): RateHistoryViewEntity? {
         val fromCode = conversions.first().baseCurrencyCode ?: return null
         val fromName = conversions.first().baseCurrencyName ?: return null
         val toCode = conversions.first().rates?.keys?.first() ?: return null
@@ -18,6 +18,12 @@ class RateHistoryMapper(private val conversions: List<ConversionResponse>) {
             datesToRates[date] = rate
         }
 
-        return RateHistoryEntity(fromCode, fromName, toCode, toName, datesToRates)
+        return RateHistoryViewEntity(
+            fromCode,
+            fromName,
+            toCode,
+            toName,
+            datesToRates
+        )
     }
 }

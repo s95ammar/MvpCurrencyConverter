@@ -13,7 +13,7 @@ import com.s95ammar.mvpcurrencyconverter.R
 import com.s95ammar.mvpcurrencyconverter.ServiceLocator
 import com.s95ammar.mvpcurrencyconverter.ui.activity.LoadingManager
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
-import com.s95ammar.mvpcurrencyconverter.ui.home.entity.RateHistoryEntity
+import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateHistoryViewEntity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -54,7 +54,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
         home_layout_swipe_to_refresh.isRefreshing = false
     }
 
-    override fun displayHistory(history: RateHistoryEntity) {
+    override fun displayHistory(history: RateHistoryViewEntity) {
         chart.visibility = View.VISIBLE
         val xValues = history.datesToRates.values
         val yValues = history.datesToRates.toList().mapIndexed { i, pair ->  Entry(i.toFloat(), pair.second.toFloat()) }
