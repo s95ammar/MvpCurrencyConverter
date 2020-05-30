@@ -80,10 +80,9 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
             circleHoleColor = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
             setCircleColor(ContextCompat.getColor(requireContext(), R.color.colorAccent))
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-
         }
 
-        val dataSets = mutableListOf<ILineDataSet>().apply { add(lineDataSet) }
+        val dataSets = mutableListOf<ILineDataSet>(lineDataSet)
 
         chart.animateX(500)
         chart.data = LineData(dataSets).apply { isHighlightEnabled = false }

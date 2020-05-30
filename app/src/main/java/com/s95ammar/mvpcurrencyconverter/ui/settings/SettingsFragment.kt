@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.s95ammar.mvpcurrencyconverter.Constants
 import com.s95ammar.mvpcurrencyconverter.Constants.NONE
 import com.s95ammar.mvpcurrencyconverter.R
 import com.s95ammar.mvpcurrencyconverter.ServiceLocator
+import com.s95ammar.mvpcurrencyconverter.setSelectionListener
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -53,30 +55,17 @@ class SettingsFragment : BaseFragment<SettingsContract.Presenter>(), SettingsCon
             home_country_currency_spinner.setSelection(dataList.indexOfFirst { it.startsWith(code) })
         }
 
-        home_country_currency_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                (parent?.selectedItem as? String)?.let { selection ->
-                    application.homeCurrencyCode = if (selection == NONE) null else selection.split(" ").first()
-                }
-            }
+        home_country_currency_spinner.setSelectionListener<String> { selection ->
+            application.homeCurrencyCode = if (selection == NONE) null else selection.split(" ").first()
         }
     }
 
     private fun setUpBaseCountryCurrencySpinner(currenciesList: List<String>) {
         base_currency_spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, currenciesList)
         base_currency_spinner.setSelection(currenciesList.indexOfFirst { it.startsWith(application.baseCurrencyCode) })
-        base_currency_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                (parent?.selectedItem as? String)?.let { selection ->
-                    application.baseCurrencyCode = selection.split(" ").first()
-                }
-            }
+        base_currency_spinner.setSelectionListener<String> { selection ->
+            application.baseCurrencyCode = selection.split(" ").first()
         }
-
     }
 
 }

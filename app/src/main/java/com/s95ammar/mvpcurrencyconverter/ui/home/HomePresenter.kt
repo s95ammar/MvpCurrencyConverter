@@ -46,11 +46,14 @@ class HomePresenter(
             }
             .subIoObserveMain(
                 onSuccess = { response ->
-                    RateHistoryMapper(response).toEntity()?.let { history ->
+                    val history = RateHistoryMapper(response).toEntity()
+                    if (history != null) {
                         view?.setCurrencyCodes(history.fromCode, history.toCode)
                         view?.setDateRange(history.datesToRates.keys.first(), history.datesToRates.keys.last())
                         view?.displayHistory(history)
-                    } ?: view?.onError(Errors.COUNTRY_UNAVAILABLE_ERROR)
+                    } else {
+                        view?.onError(Errors.COUNTRY_UNAVAILABLE_ERROR)
+                    }
                 },
                 onError = { throwable -> parseError(throwable) },
                 doFinally = { view?.hideLoading() }
