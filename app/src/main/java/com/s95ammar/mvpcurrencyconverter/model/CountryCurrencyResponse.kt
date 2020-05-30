@@ -1,4 +1,4 @@
-package com.s95ammar.mvpcurrencyconverter.api.resp
+package com.s95ammar.mvpcurrencyconverter.model
 
 import com.google.gson.annotations.SerializedName
 

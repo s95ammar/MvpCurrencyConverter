@@ -1,6 +1,6 @@
 package com.s95ammar.mvpcurrencyconverter.ui.currencieslist
 
-import com.s95ammar.mvpcurrencyconverter.api.mappers.RatesMapper
+import com.s95ammar.mvpcurrencyconverter.model.mappers.RatesMapper
 import com.s95ammar.mvpcurrencyconverter.logcat
 import com.s95ammar.mvpcurrencyconverter.model.Repository
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain

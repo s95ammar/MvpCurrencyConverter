@@ -1,6 +1,6 @@
-package com.s95ammar.mvpcurrencyconverter.api.mappers
+package com.s95ammar.mvpcurrencyconverter.model.mappers
 
-import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
+import com.s95ammar.mvpcurrencyconverter.model.ConversionResponse
 import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity
 
 class RatesMapper(private val conversion: ConversionResponse) {

@@ -1,7 +1,7 @@
 package com.s95ammar.mvpcurrencyconverter.api
 
-import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
-import com.s95ammar.mvpcurrencyconverter.api.resp.CountryCurrencyResponse
+import com.s95ammar.mvpcurrencyconverter.model.ConversionResponse
+import com.s95ammar.mvpcurrencyconverter.model.CountryCurrencyResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

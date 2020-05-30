@@ -1,8 +1,8 @@
 package com.s95ammar.mvpcurrencyconverter.ui.home
 
 import com.s95ammar.mvpcurrencyconverter.*
-import com.s95ammar.mvpcurrencyconverter.api.mappers.RateHistoryMapper
-import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
+import com.s95ammar.mvpcurrencyconverter.model.mappers.RateHistoryMapper
+import com.s95ammar.mvpcurrencyconverter.model.ConversionResponse
 import com.s95ammar.mvpcurrencyconverter.model.Repository
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
 import io.reactivex.Single

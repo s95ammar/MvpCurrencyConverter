@@ -2,8 +2,6 @@ package com.s95ammar.mvpcurrencyconverter.model
 
 import com.s95ammar.mvpcurrencyconverter.api.ApiService
 import com.s95ammar.mvpcurrencyconverter.api.RetrofitClient
-import com.s95ammar.mvpcurrencyconverter.api.resp.ConversionResponse
-import com.s95ammar.mvpcurrencyconverter.api.resp.CountryCurrencyResponse
 import io.reactivex.Single
 
 class Repository(private val apiService: ApiService) {
