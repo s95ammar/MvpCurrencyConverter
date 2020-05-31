@@ -7,7 +7,6 @@ import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity
 class SettingsContract {
 
     interface Presenter : BaseContract.Presenter<View> {
-        fun onRefresh()
     }
 
     interface View : BaseContract.View {

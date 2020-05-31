@@ -15,10 +15,6 @@ class SettingsPresenter(
 
     override fun onAttach() {
         view?.showLoading()
-        onRefresh()
-    }
-
-    override fun onRefresh() {
         loadCurrenciesList()
     }
 

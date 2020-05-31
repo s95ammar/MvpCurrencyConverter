@@ -56,7 +56,7 @@ class SettingsFragment : BaseFragment<SettingsContract.Presenter>(), SettingsCon
         }
 
         home_country_currency_spinner.setSelectionListener<String> { selection ->
-            application.homeCurrencyCode = if (selection == NONE) null else selection.split(" ").first()
+            if (selection != NONE) application.homeCurrencyCode = selection.split(" ").first()
         }
     }
 
