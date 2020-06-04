@@ -1,13 +1,13 @@
 package com.s95ammar.mvpcurrencyconverter.ui.currencieslist
 
 import com.s95ammar.mvpcurrencyconverter.Errors
+import com.s95ammar.mvpcurrencyconverter.model.IRepository
 import com.s95ammar.mvpcurrencyconverter.model.mappers.RatesMapper
-import com.s95ammar.mvpcurrencyconverter.model.Repository
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
 
 class CurrenciesListPresenter(
-    repository: Repository,
+    repository: IRepository,
     homeCountryCode: String,
     baseCurrencyCode: String,
     homeCurrencyCode: String?

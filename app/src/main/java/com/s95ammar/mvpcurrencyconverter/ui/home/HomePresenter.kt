@@ -1,16 +1,19 @@
 package com.s95ammar.mvpcurrencyconverter.ui.home
 
-import com.s95ammar.mvpcurrencyconverter.*
-import com.s95ammar.mvpcurrencyconverter.model.mappers.RateHistoryMapper
+import com.s95ammar.mvpcurrencyconverter.Constants
+import com.s95ammar.mvpcurrencyconverter.Errors
+import com.s95ammar.mvpcurrencyconverter.disposeBy
 import com.s95ammar.mvpcurrencyconverter.model.ConversionResponse
-import com.s95ammar.mvpcurrencyconverter.model.Repository
+import com.s95ammar.mvpcurrencyconverter.model.IRepository
+import com.s95ammar.mvpcurrencyconverter.model.mappers.RateHistoryMapper
+import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
 import io.reactivex.Single
 import io.reactivex.functions.Function
 import org.joda.time.LocalDate
 
 class HomePresenter(
-    repository: Repository,
+    repository: IRepository,
     homeCountryCode: String,
     baseCurrencyCode: String,
     homeCurrencyCode: String?

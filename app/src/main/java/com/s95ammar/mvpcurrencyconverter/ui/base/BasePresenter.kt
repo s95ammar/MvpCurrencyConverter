@@ -3,7 +3,7 @@ package com.s95ammar.mvpcurrencyconverter.ui.base
 import androidx.annotation.Nullable
 import com.s95ammar.mvpcurrencyconverter.Errors
 import com.s95ammar.mvpcurrencyconverter.logcat
-import com.s95ammar.mvpcurrencyconverter.model.Repository
+import com.s95ammar.mvpcurrencyconverter.model.IRepository
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -12,7 +12,7 @@ import java.net.ConnectException
 import java.net.UnknownHostException
 
 abstract class BasePresenter<V : BaseContract.View>(
-    protected val repository: Repository,
+    protected val repository: IRepository,
     private val homeCountryCode: String,
     protected val baseCurrencyCode: String,
     @Nullable private var homeCurrencyCode: String?
