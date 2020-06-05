@@ -3,6 +3,7 @@ Simple currency converter app, which demonstrates MVP implementation in android
 
 <details>
   <summary>App preview (gif)</summary>
+ 
 
 ![Screen-Recording-20200531-195807](https://user-images.githubusercontent.com/32682273/83385760-7810c700-a3f2-11ea-97cf-15d991549d37.gif)
 
@@ -22,8 +23,7 @@ Simple currency converter app, which demonstrates MVP implementation in android
 
 </details>
 
-<details>
-  <summary>Tests</summary>
+##### Tests
 
 - [HomePresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/home/HomePresenterTest.kt)
 - [CurrenciesListPresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/currencieslist/CurrenciesListPresenterTest.kt)
@@ -31,5 +31,4 @@ Simple currency converter app, which demonstrates MVP implementation in android
 
 ![image](https://user-images.githubusercontent.com/32682273/83919227-d0452180-a782-11ea-9c39-7dcded57e70b.png)
 
-</details>
 
