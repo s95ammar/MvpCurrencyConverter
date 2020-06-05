@@ -5,9 +5,9 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-class FakeRepository: IRepository {
+class FakeRepository : IRepository {
     override fun getCountryCurrency(countryCode: String): Single<CountryCurrencyResponse.Currency> {
-        TODO("Not yet implemented")
+        return Single.just(CountryCurrencyResponse.Currency("UAH", "Ukrainian hryvnia", "₴"))
     }
 
     override fun getRate(from: String, to: String, amount: Double): Single<ConversionResponse> {
@@ -15,7 +15,14 @@ class FakeRepository: IRepository {
     }
 
     override fun getRateHistory(date: String, from: String, to: String, amount: Double): Single<ConversionResponse> {
-        TODO("Not yet implemented")
+        val response = ConversionResponse(
+            amount = 1.0,
+            baseCurrencyCode = "USD",
+            baseCurrencyName = "US Dollar",
+            rates = mapOf("UAH" to ConversionResponse.TargetCurrency("Ukrainian Hryvnia", 26.9842, 26.9842)),
+            updatedDate = date
+        )
+        return Single.just(response)
     }
 
 }

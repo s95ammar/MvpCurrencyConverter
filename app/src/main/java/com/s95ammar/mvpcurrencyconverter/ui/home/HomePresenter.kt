@@ -8,6 +8,7 @@ import com.s95ammar.mvpcurrencyconverter.model.IRepository
 import com.s95ammar.mvpcurrencyconverter.model.mappers.RateHistoryMapper
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
+import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateHistoryViewEntity
 import io.reactivex.Single
 import io.reactivex.functions.Function
 import org.joda.time.LocalDate
@@ -20,6 +21,8 @@ class HomePresenter(
 ) : BasePresenter<HomeContract.View>(repository, homeCountryCode, baseCurrencyCode, homeCurrencyCode),
     HomeContract.Presenter {
 
+    var history: RateHistoryViewEntity? = null
+
     override fun onAttach() {
         view?.showLoading()
         onRefresh()
@@ -29,7 +32,7 @@ class HomePresenter(
         loadBaseToHomeHistory()
     }
 
-    private fun loadBaseToHomeHistory() {
+    fun loadBaseToHomeHistory() {
         singleHomeCurrencyCode
             .flatMap { homeCurrencyCode ->
 
@@ -50,6 +53,7 @@ class HomePresenter(
             .subIoObserveMain(
                 onSuccess = { response ->
                     val history = RateHistoryMapper(response).toEntity()
+                    this.history = history
                     if (history != null) {
                         view?.setCurrencyCodes(history.fromCode, history.toCode)
                         view?.setDateRange(history.datesToRates.keys.first(), history.datesToRates.keys.last())
