@@ -23,7 +23,7 @@ Simple currency converter app, which demonstrates MVP implementation in android
 
 </details>
 
-##### Tests
+##### ▼ Tests
 
 - [HomePresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/home/HomePresenterTest.kt)
 - [CurrenciesListPresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/currencieslist/CurrenciesListPresenterTest.kt)
