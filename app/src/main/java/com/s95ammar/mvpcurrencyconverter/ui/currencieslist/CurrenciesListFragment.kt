@@ -1,6 +1,5 @@
 package com.s95ammar.mvpcurrencyconverter.ui.currencieslist
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.s95ammar.mvpcurrencyconverter.Constants
 import com.s95ammar.mvpcurrencyconverter.R
 import com.s95ammar.mvpcurrencyconverter.ServiceLocator
-import com.s95ammar.mvpcurrencyconverter.ui.activity.LoadingManager
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 import com.s95ammar.mvpcurrencyconverter.ui.currencieslist.adapter.CurrenciesListAdapter
 import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity

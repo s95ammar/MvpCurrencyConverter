@@ -11,7 +11,9 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.s95ammar.mvpcurrencyconverter.*
+import com.s95ammar.mvpcurrencyconverter.Constants
+import com.s95ammar.mvpcurrencyconverter.R
+import com.s95ammar.mvpcurrencyconverter.ServiceLocator
 import com.s95ammar.mvpcurrencyconverter.ui.base.BaseFragment
 import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateHistoryViewEntity
 import kotlinx.android.synthetic.main.fragment_home.*

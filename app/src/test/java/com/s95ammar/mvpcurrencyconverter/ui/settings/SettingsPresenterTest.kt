@@ -2,11 +2,10 @@ package com.s95ammar.mvpcurrencyconverter.ui.settings
 
 import com.s95ammar.mvpcurrencyconverter.RxJavaTestingUtil
 import com.s95ammar.mvpcurrencyconverter.model.FakeRepository
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.BeforeClass
+import org.junit.Test
 
 class SettingsPresenterTest {
 

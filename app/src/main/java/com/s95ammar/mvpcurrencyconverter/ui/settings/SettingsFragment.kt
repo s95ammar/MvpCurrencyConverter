@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
-import com.s95ammar.mvpcurrencyconverter.Constants
 import com.s95ammar.mvpcurrencyconverter.Constants.NONE
 import com.s95ammar.mvpcurrencyconverter.R
 import com.s95ammar.mvpcurrencyconverter.ServiceLocator

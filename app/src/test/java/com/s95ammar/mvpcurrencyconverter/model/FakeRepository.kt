@@ -1,9 +1,6 @@
 package com.s95ammar.mvpcurrencyconverter.model
 
 import io.reactivex.Single
-import org.junit.Test
-
-import org.junit.Assert.*
 
 class FakeRepository : IRepository {
 
