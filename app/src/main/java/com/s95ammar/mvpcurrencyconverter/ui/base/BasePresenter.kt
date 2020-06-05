@@ -1,6 +1,7 @@
 package com.s95ammar.mvpcurrencyconverter.ui.base
 
 import androidx.annotation.Nullable
+import androidx.annotation.VisibleForTesting
 import com.s95ammar.mvpcurrencyconverter.Errors
 import com.s95ammar.mvpcurrencyconverter.logcat
 import com.s95ammar.mvpcurrencyconverter.model.IRepository
@@ -15,7 +16,7 @@ abstract class BasePresenter<V : BaseContract.View>(
     protected val repository: IRepository,
     private val homeCountryCode: String,
     protected val baseCurrencyCode: String,
-    @Nullable var homeCurrencyCode: String?
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE) @Nullable var homeCurrencyCode: String?
 ) : BaseContract.Presenter<V> {
 
     var view: V? = null

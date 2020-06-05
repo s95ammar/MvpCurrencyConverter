@@ -11,12 +11,12 @@ class Repository(private val apiService: ApiService) : IRepository {
             .map { currenciesResp -> currenciesResp.currencies.firstOrNull() }
     }
 
-    override fun getRate(from: String, to: String, amount: Double): Single<ConversionResponse> {
-        return apiService.getRate(from, to, amount)
+    override fun getRates(from: String): Single<ConversionResponse> {
+        return apiService.getRate(from)
     }
 
-    override fun getRateHistory(date: String, from: String, to: String, amount: Double): Single<ConversionResponse> {
-        return apiService.getRateHistory(date, from, to, amount)
+    override fun getRateHistory(date: String, from: String, to: String): Single<ConversionResponse> {
+        return apiService.getRateHistory(date, from, to)
     }
 
 }

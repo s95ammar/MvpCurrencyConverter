@@ -16,8 +16,8 @@ interface ApiService {
     @GET("convert")
     fun getRate(
         @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("amount") amount: Double
+        @Query("to") to: String = "",
+        @Query("amount") amount: Double = 1.0
     ): Single<ConversionResponse>
 
     @GET("convert")
@@ -30,6 +30,6 @@ interface ApiService {
         @Path("date") date: String,
         @Query("from") from: String,
         @Query("to") to: String,
-        @Query("amount") amount: Double
+        @Query("amount") amount: Double = 1.0
     ): Single<ConversionResponse>
 }

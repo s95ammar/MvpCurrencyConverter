@@ -5,6 +5,7 @@ import com.s95ammar.mvpcurrencyconverter.model.IRepository
 import com.s95ammar.mvpcurrencyconverter.model.mappers.RatesMapper
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
+import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity
 
 class CurrenciesListPresenter(
     repository: IRepository,
@@ -14,21 +15,24 @@ class CurrenciesListPresenter(
 ) : BasePresenter<CurrenciesListContract.View>(repository, homeCountryCode, baseCurrencyCode, homeCurrencyCode),
     CurrenciesListContract.Presenter {
 
+    var rates: List<RateViewEntity>? = null
+
     override fun onAttach() {
         view?.showLoading()
         onRefresh()
     }
 
     override fun onRefresh() {
-        loadRatesFromAllToBase()
+        loadRatesFromAllToHome()
     }
 
-    private fun loadRatesFromAllToBase() {
+    fun loadRatesFromAllToHome() {
         singleHomeCurrencyCode
-            .flatMap { repository.getRate(it) }
+            .flatMap { repository.getRates(it) }
             .subIoObserveMain(
                 onSuccess = { resp ->
                     val rates = RatesMapper(resp).toEntity()
+                    this.rates = rates
                     if (rates.isNotEmpty()) {
                         view?.setFromCode(rates.first().toCode)
                         view?.setDate(rates.first().Date)
