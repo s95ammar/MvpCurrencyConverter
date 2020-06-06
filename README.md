@@ -10,7 +10,7 @@ Simple currency converter app, which demonstrates MVP implementation in android
 </details>
 
 <details>
-  <summary>MVP classes package structure (UML diagram)</summary>
+  <summary>Classes diagram</summary>
   
 > - [Activity](https://github.com/s95ammar/MvpCurrencyConverter/tree/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/ui/activity)
 > - [Base](https://github.com/s95ammar/MvpCurrencyConverter/tree/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/ui/base)
