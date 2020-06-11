@@ -41,4 +41,10 @@ inline fun <reified T> Spinner.setSelectionListener(crossinline listener: (selec
 
 }
 
+fun parseFraction(ratio: String): Double {
+    val rat = ratio.split("/")
+    return rat[0].toDouble() / rat[1].toDouble()
+}
+
+
 data class Header(val name: String, val value: String)

@@ -3,6 +3,7 @@ package com.s95ammar.mvpcurrencyconverter.ui.currencieslist
 import com.s95ammar.mvpcurrencyconverter.Errors
 import com.s95ammar.mvpcurrencyconverter.model.IRepository
 import com.s95ammar.mvpcurrencyconverter.model.mappers.RatesMapper
+import com.s95ammar.mvpcurrencyconverter.parseFraction
 import com.s95ammar.mvpcurrencyconverter.subIoObserveMain
 import com.s95ammar.mvpcurrencyconverter.ui.base.BasePresenter
 import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity
@@ -16,6 +17,7 @@ class CurrenciesListPresenter(
     CurrenciesListContract.Presenter {
 
     var rates: List<RateViewEntity>? = null
+    var ratesByInput: List<RateViewEntity>? = null
 
     override fun onAttach() {
         view?.showLoading()
@@ -46,6 +48,14 @@ class CurrenciesListPresenter(
 
             )
 
+
+    }
+
+    override fun onUserInput(input: String) {
+        val inputValue = if (input.contains("/")) parseFraction(input) else input.toDouble()
+        ratesByInput = rates?.map { it.copy(rate = it.rate * inputValue) }?.also {
+            view?.displayRates(it)
+        }
 
     }
 }

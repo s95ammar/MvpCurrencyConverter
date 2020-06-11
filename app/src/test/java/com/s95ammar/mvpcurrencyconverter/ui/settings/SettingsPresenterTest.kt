@@ -34,8 +34,8 @@ class SettingsPresenterTest {
 
     @Test
     fun loadCurrenciesList_homeCurrencyCodeIsNull_setsHomeCurrencyCodeAndLoadsCurrenciesList() {
-        settingsPresenter.currencies = null
         settingsPresenter.homeCurrencyCode = null
+        settingsPresenter.currencies = null
 
         settingsPresenter.loadCurrenciesList()
 

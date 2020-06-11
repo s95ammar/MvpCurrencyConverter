@@ -35,8 +35,8 @@ class HomePresenterTest {
 
     @Test
     fun loadBaseToHomeHistory_homeCurrencyCodeIsNull_setsHomeCurrencyCodeAndLoadsHistory() {
-        homePresenter.history = null
         homePresenter.homeCurrencyCode = null
+        homePresenter.history = null
 
         homePresenter.loadBaseToHomeHistory()
 

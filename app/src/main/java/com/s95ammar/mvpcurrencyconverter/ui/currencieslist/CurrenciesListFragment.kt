@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.s95ammar.mvpcurrencyconverter.Constants
 import com.s95ammar.mvpcurrencyconverter.R
@@ -14,7 +15,7 @@ import com.s95ammar.mvpcurrencyconverter.ui.viewentities.RateViewEntity
 import kotlinx.android.synthetic.main.fragment_currencies_list.*
 import org.joda.time.LocalDate
 
-class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), CurrenciesListContract.View {
+class CurrenciesListFragment : BaseFragment<CurrenciesListContract.Presenter>(), CurrenciesListContract.View {
 
     private val adapter = CurrenciesListAdapter()
 
@@ -35,6 +36,7 @@ class CurrenciesListFragment : BaseFragment<CurrenciesListPresenter>(), Currenci
         list_layout_swipe_to_refresh.setOnRefreshListener { presenter.onRefresh() }
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.adapter = adapter
+        input_edit_text.doAfterTextChanged { presenter.onUserInput(it.toString()) }
     }
 
     override fun showLoading() {

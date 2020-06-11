@@ -6,6 +6,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test
+import kotlin.NumberFormatException
 
 class CurrenciesListPresenterTest {
 
@@ -34,8 +35,8 @@ class CurrenciesListPresenterTest {
 
     @Test
     fun loadRatesFromAllToHome_homeCurrencyCodeIsNull_setsHomeCurrencyCodeAndLoadsRates() {
-        currenciesListPresenter.rates = null
         currenciesListPresenter.homeCurrencyCode = null
+        currenciesListPresenter.rates = null
 
         currenciesListPresenter.loadRatesFromAllToHome()
 
@@ -51,6 +52,26 @@ class CurrenciesListPresenterTest {
         currenciesListPresenter.loadRatesFromAllToHome()
 
         assertNotNull(currenciesListPresenter.rates)
+    }
+
+    @Test
+    fun onUserInput_inputIsPositiveValue_doesNotThrowException() {
+        currenciesListPresenter.onUserInput("5")
+    }
+
+    @Test
+    fun onUserInput_inputIsNegativeValue_doesNotThrowException() {
+        currenciesListPresenter.onUserInput("-5")
+    }
+
+    @Test
+    fun onUserInput_inputIsDoubleValue_doesNotThrowException() {
+        currenciesListPresenter.onUserInput("1/2")
+    }
+
+    @Test(expected = NumberFormatException::class)
+    fun onUserInput_inputIsNotANumber_doesNotThrowException() {
+        currenciesListPresenter.onUserInput("a")
     }
 
 }

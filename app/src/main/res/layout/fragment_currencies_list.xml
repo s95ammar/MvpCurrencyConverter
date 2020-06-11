@@ -32,6 +32,14 @@
                 android:singleLine="true"
                 tools:text="30.05.2020" />
 
+            <EditText
+                android:id="@+id/input_edit_text"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/amount_1.00"
+                android:inputType="numberDecimal"
+                android:textAlignment="center" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

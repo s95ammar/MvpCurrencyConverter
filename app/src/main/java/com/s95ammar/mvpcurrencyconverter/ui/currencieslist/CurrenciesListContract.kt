@@ -7,6 +7,7 @@ class CurrenciesListContract {
 
     interface Presenter : BaseContract.Presenter<View> {
         fun onRefresh()
+        fun onUserInput(input: String)
     }
 
     interface View : BaseContract.View {
