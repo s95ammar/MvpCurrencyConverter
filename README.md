@@ -25,9 +25,15 @@ Simple currency converter app, which demonstrates MVP implementation in android
 
 ##### ▼ Tests
 
-- [HomePresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/home/HomePresenterTest.kt)
-- [CurrenciesListPresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/currencieslist/CurrenciesListPresenterTest.kt)
-- [SettingsPresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/settings/SettingsPresenterTest.kt)
+> To test the presenters in isolation (so that the tests don't depend on internet connection and server functionality), we provide a [`FakeRepository`](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/model/FakeRepository.kt) (a test-double for the real [`Repository`](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/model/Repository.kt)) to the presenter in the tests. This is done by __*dependency injection*__ and __*inversion of control*__ with the help of [`IRepository`](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/model/IRepository.kt) interface.
+
+Pesenters test classes:
+
+Class | Test class
+------------ | -------------
+[HomePresenter](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/ui/home/HomePresenter.kt) | [HomePresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/home/HomePresenterTest.kt)
+[CurrenciesListPresenter](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/ui/currencieslist/CurrenciesListPresenter.kt) | [CurrenciesListPresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/currencieslist/CurrenciesListPresenterTest.kt)
+[SettingsPresenter](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/ui/settings/SettingsPresenter.kt) | [SettingsPresenterTest](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/ui/settings/SettingsPresenterTest.kt)
 
 ![image](https://user-images.githubusercontent.com/32682273/83919227-d0452180-a782-11ea-9c39-7dcded57e70b.png)
 
