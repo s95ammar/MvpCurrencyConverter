@@ -27,7 +27,6 @@ Simple currency converter app, which demonstrates MVP implementation in android
 
 > To test the presenters in isolation (so that the tests don't depend on internet connection and server functionality), we provide a [`FakeRepository`](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/test/java/com/s95ammar/mvpcurrencyconverter/model/FakeRepository.kt) (a test-double for the real [`Repository`](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/model/Repository.kt)) to the presenter in the tests. This is done by __*dependency injection*__ and __*inversion of control*__ with the help of [`IRepository`](https://github.com/s95ammar/MvpCurrencyConverter/blob/master/app/src/main/java/com/s95ammar/mvpcurrencyconverter/model/IRepository.kt) interface.
 
-Pesenters test classes:
 
 Class | Test class
 ------------ | -------------
