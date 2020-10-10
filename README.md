@@ -1,3 +1,7 @@
+`@Deprecated`
+
+![photo_2020-10-01_14-34-55](https://user-images.githubusercontent.com/32682273/95655604-4979ca00-0b11-11eb-919c-596bb6d3cb0b.jpg)
+
 # MvpCurrencyConverter
 Simple currency converter app, which demonstrates MVP implementation in android
 
